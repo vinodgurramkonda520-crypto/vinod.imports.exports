@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GVK Trade Desk</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5fa;--card:#fff;--ink:#0d1b3d;--mute:#5b6781;--line:#d9e0ec;--navy:#0a2463;--gold:#f2a516;--gold-ink:#1b1400;--ok:#13795b;--blue:#1d5fd1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1330;--card:#122049;--ink:#eef2fb;--mute:#9fb0d3;--line:#223463;--navy:#05102e;--ok:#4cd1a1;--blue:#7fb0ff}}
+:root[data-theme="dark"]{--bg:#0a1330;--card:#122049;--ink:#eef2fb;--mute:#9fb0d3;--line:#223463;--navy:#05102e;--ok:#4cd1a1;--blue:#7fb0ff}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0}
+header{background:var(--navy);color:#fff;padding:18px 16px 0}
+.wrap{max-width:860px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top h1{font-size:22px}
+.top p{margin:2px 0 0;color:#b9c6e8;font-size:14px}
+.act{display:flex;gap:8px}
+.btn{border:0;border-radius:8px;padding:10px 14px;font:600 14px "Instrument Sans",sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
+.gold{background:var(--gold);color:var(--gold-ink)}
+.wa{background:#1d5fd1;color:#fff}
+.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+nav{display:flex;gap:4px;margin-top:16px;overflow-x:auto}
+nav button{background:none;border:0;color:#b9c6e8;padding:12px 16px;font:600 15px "Instrument Sans",sans-serif;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button[aria-selected=true]{color:#fff;border-color:var(--gold)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+main{padding:20px 16px 48px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat b{font:700 26px Fraunces,serif;display:block}
+.stat span{color:var(--mute);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-bottom:4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+textarea{min-height:70px;resize:vertical}
+.full{grid-column:1/-1}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.row h3{font-size:18px}
+.meta{color:var(--mute);font-size:14px;margin:2px 0}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--line);color:var(--ink)}
+.steps{display:flex;gap:4px;margin:12px 0 8px}
+.steps i{flex:1;height:8px;border-radius:4px;background:var(--line)}
+.steps i.on{background:var(--gold)}
+.steps i.done{background:var(--ok)}
+.empty{text-align:center;color:var(--mute);padding:28px 12px;border:2px dashed var(--line);border-radius:10px}
+.result{background:var(--navy);color:#fff;border-radius:10px;padding:18px}
+.result b{font:700 30px Fraunces,serif;color:var(--gold)}
+.result table{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+.result td{padding:4px 0;border-bottom:1px solid #ffffff22}
+.result td:last-child{text-align:right}
+.small{font-size:13px;color:var(--mute)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top">
+    <div><h1>G Vinod Kumar Import &amp; Export</h1><p>Trade desk · Connecting Markets, Building Opportunities</p></div>
+    <div class="act"><a class="btn gold" href="tel:+917989050723">Call</a><a class="btn wa" href="https://wa.me/917989050723" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <nav role="tablist">
+    <button role="tab" aria-selected="true" data-t="enq">Enquiries</button>
+    <button role="tab" aria-selected="false" data-t="shp">Shipments</button>
+    <button role="tab" aria-selected="false" data-t="qte">Cost calculator</button>
+  </nav>
+</div></header>
+
+<main><div class="wrap">
+
+<section id="enq">
+  <div class="stats" id="stats"></div>
+  <form class="card grid" id="enqForm" onsubmit="return false">
+    <div><label for="en">Name</label><input id="en" required></div>
+    <div><label for="ec">Company</label><input id="ec"></div>
+    <div><label for="ep">Phone or email</label><input id="ep"></div>
+    <div><label for="ecat">Product category</label>
+      <select id="ecat"><option>Agricultural Products</option><option>Food &amp; Beverages</option><option>Textiles &amp; Apparel</option><option>Machinery &amp; Equipment</option><option>Electronics &amp; Electricals</option><option>General Merchandise</option><option>Other</option></select></div>
+    <div><label for="etype">Enquiry type</label>
+      <select id="etype"><option>Import</option><option>Export</option><option>Sourcing</option><option>Logistics</option><option>Consulting</option><option>Customs &amp; compliance</option></select></div>
+    <div class="full"><label for="enote">Requirement</label><textarea id="enote" placeholder="Product, quantity, destination, target price"></textarea></div>
+    <div class="full"><button class="btn gold" id="addEnq">Save enquiry</button></div>
+  </form>
+  <div style="display:flex;gap:8px;margin:16px 0 8px;align-items:center;flex-wrap:wrap">
+    <label for="flt" style="margin:0">Show</label>
+    <select id="flt" style="width:auto"><option>All</option><option>New</option><option>In discussion</option><option>Quoted</option><option>Won</option><option>Closed</option></select>
+  </div>
+  <div id="enqList"></div>
+</section>
+
+<section id="shp" hidden>
+  <form class="card grid" onsubmit="return false">
+    <div><label for="sr">Reference</label><input id="sr" placeholder="e.g. GVK-0001"></div>
+    <div><label for="sp">Product</label><input id="sp" required></div>
+    <div class="full"><label for="sroute">Route</label><input id="sroute" placeholder="e.g. Hyderabad to Dubai"></div>
+    <div class="full"><button class="btn gold" id="addShp">Add shipment</button></div>
+  </form>
+  <div id="shpList"></div>
+</section>
+
+<section id="qte" hidden>
+  <div class="card grid">
+    <div><label for="qv">Goods value (₹)</label><input id="qv" type="number" min="0" inputmode="decimal" value="500000"></div>
+    <div><label for="qf">Freight &amp; insurance (₹)</label><input id="qf" type="number" min="0" inputmode="decimal" value="45000"></div>
+    <div><label for="qd">Customs duty (%)</label><input id="qd" type="number" min="0" step="0.1" inputmode="decimal" value="10"></div>
+    <div><label for="qg">GST / IGST (%)</label><input id="qg" type="number" min="0" step="0.1" inputmode="decimal" value="18"></div>
+    <div><label for="qo">Handling &amp; other (₹)</label><input id="qo" type="number" min="0" inputmode="decimal" value="15000"></div>
+    <div><label for="qm">Your margin (%)</label><input id="qm" type="number" min="0" step="0.1" inputmode="decimal" value="12"></div>
+  </div>
+  <div class="result" id="qres"></div>
+  <p class="small">Estimate only. Duty is charged on goods plus freight and insurance; confirm rates with your customs agent for the product's HS code.</p>
+</section>
+
+</div></main>
+
+<script>
+const $=id=>document.getElementById(id);
+const STAGES=["Requirement","Sourcing","Pricing & terms","Documents & logistics","Delivered"];
+const STATUS=["New","In discussion","Quoted","Won","Closed"];
+let S={enq:[],shp:[]};
+try{const r=localStorage.getItem("gvk-desk");if(r)S=JSON.parse(r)}catch(e){}
+const save=()=>{try{localStorage.setItem("gvk-desk",JSON.stringify(S))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  ["enq","shp","qte"].forEach(t=>$(t).hidden=t!==b.dataset.t);
+});
+
+function renderEnq(){
+  const n=s=>S.enq.filter(e=>e.status===s).length;
+  $("stats").innerHTML=[["Total",S.enq.length],["New",n("New")],["Quoted",n("Quoted")],["Won",n("Won")]]
+    .map(([l,v])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("");
+  const f=$("flt").value, list=S.enq.filter(e=>f==="All"||e.status===f);
+  $("enqList").innerHTML=list.length?list.map(e=>`
+   <div class="card"><div class="row"><div>
+     <h3>${esc(e.name)}${e.company?" · "+esc(e.company):""}</h3>
+     <p class="meta">${esc(e.type)} · ${esc(e.cat)} · ${esc(e.date)}</p>
+     ${e.contact?`<p class="meta">${esc(e.contact)}</p>`:""}
+     ${e.note?`<p style="margin:8px 0 0">${esc(e.note)}</p>`:""}</div>
+     <select aria-label="Status" data-id="${e.id}" class="st" style="width:auto">${STATUS.map(s=>`<option${s===e.status?" selected":""}>${s}</option>`).join("")}</select></div>
+     <div style="margin-top:10px"><button class="btn ghost" data-del="${e.id}">Delete</button></div></div>`).join("")
+   :`<div class="empty">${S.enq.length?"No enquiries with this status.":"No enquiries yet. Save the first one above."}</div>`;
+  document.querySelectorAll(".st").forEach(s=>s.onchange=()=>{S.enq.find(e=>e.id==s.dataset.id).status=s.value;save();renderEnq()});
+  document.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{S.enq=S.enq.filter(e=>e.id!=b.dataset.del);save();renderEnq()});
+}
+$("flt").onchange=renderEnq;
+$("addEnq").onclick=()=>{
+  if(!$("en").value.trim()){$("en").focus();return}
+  S.enq.unshift({id:Date.now(),name:$("en").value.trim(),company:$("ec").value.trim(),contact:$("ep").value.trim(),cat:$("ecat").value,type:$("etype").value,note:$("enote").value.trim(),status:"New",date:new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})});
+  ["en","ec","ep","enote"].forEach(i=>$(i).value="");save();renderEnq();
+};
+
+function renderShp(){
+  $("shpList").innerHTML=S.shp.length?S.shp.map(s=>`
+   <div class="card"><div class="row"><div><h3>${esc(s.product)}</h3>
+    <p class="meta">${esc(s.ref||"No reference")}${s.route?" · "+esc(s.route):""}</p></div>
+    <span class="tag">${STAGES[s.stage]}</span></div>
+    <div class="steps" aria-hidden="true">${STAGES.map((_,i)=>`<i class="${i<s.stage?"done":i===s.stage?"on":""}"></i>`).join("")}</div>
+    <button class="btn gold" data-adv="${s.id}"${s.stage>=4?" disabled":""}>${s.stage>=4?"Delivered":"Move to: "+STAGES[s.stage+1]}</button>
+    <button class="btn ghost" data-sd="${s.id}">Delete</button></div>`).join("")
+   :`<div class="empty">No shipments yet. Add one to follow it from requirement to delivery.</div>`;
+  document.querySelectorAll("[data-adv]").forEach(b=>b.onclick=()=>{S.shp.find(s=>s.id==b.dataset.adv).stage++;save();renderShp()});
+  document.querySelectorAll("[data-sd]").forEach(b=>b.onclick=()=>{S.shp=S.shp.filter(s=>s.id!=b.dataset.sd);save();renderShp()});
+}
+$("addShp").onclick=()=>{
+  if(!$("sp").value.trim()){$("sp").focus();return}
+  S.shp.unshift({id:Date.now(),ref:$("sr").value.trim(),product:$("sp").value.trim(),route:$("sroute").value.trim(),stage:0});
+  ["sr","sp","sroute"].forEach(i=>$(i).value="");save();renderShp();
+};
+
+const inr=n=>"₹"+Math.round(n).toLocaleString("en-IN");
+function calc(){
+  const v=+$("qv").value||0,f=+$("qf").value||0,d=(+$("qd").value||0)/100,g=(+$("qg").value||0)/100,o=+$("qo").value||0,m=(+$("qm").value||0)/100;
+  const cif=v+f,duty=cif*d,gst=(cif+duty)*g,landed=cif+duty+gst+o,price=landed*(1+m);
+  $("qres").innerHTML=`<span>Suggested selling price</span><br><b>${inr(price)}</b>
+   <table><tr><td>Goods + freight (CIF)</td><td>${inr(cif)}</td></tr><tr><td>Customs duty</td><td>${inr(duty)}</td></tr>
+   <tr><td>GST / IGST</td><td>${inr(gst)}</td></tr><tr><td>Handling &amp; other</td><td>${inr(o)}</td></tr>
+   <tr><td><b style="font-size:16px;color:#fff">Landed cost</b></td><td><b style="font-size:16px;color:#fff">${inr(landed)}</b></td></tr>
+   <tr><td>Margin</td><td>${inr(price-landed)}</td></tr></table>`;
+}
+document.querySelectorAll("#qte input").forEach(i=>i.oninput=calc);
+renderEnq();renderShp();calc();
+</script>
+</body>
+</html>
